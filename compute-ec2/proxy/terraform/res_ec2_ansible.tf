@@ -19,3 +19,12 @@ all:
       ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   EOT
 }
+
+resource "local_file" "ansible_cfg" {
+  filename        = "./ansible.cfg"
+  file_permission = "0600"
+  content  = <<-EOT
+[ssh_connection]
+ssh_args = -o ProxyCommand='ssh -q -W %h:%p -i id_rsa ${var.proxy_backend.user}@${module.proxy_backend.public_ip}'
+  EOT
+}
