@@ -1,4 +1,4 @@
-module "proxy-frontend" {
+module "proxy_frontend" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.2"
 
@@ -24,7 +24,7 @@ module "proxy-frontend" {
   ]
 }
 
-module "proxy-backend" {
+module "proxy_backend" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.2"
 

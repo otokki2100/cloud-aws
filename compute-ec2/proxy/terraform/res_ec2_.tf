@@ -7,7 +7,7 @@ module "proxy_frontend" {
   ami                         = var.proxy_frontend.ami
   key_name                    = "rsa-keypair-${timestamp()}"
   subnet_id                   = module.vpc.public_subnets[0]
-  vpc_security_group_ids      = [module.security-group.security_group_id]
+  vpc_security_group_ids      = [module.proxy_frontend.security_group_id]
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
@@ -34,7 +34,7 @@ module "proxy_backend" {
   ami                         = var.proxy_backend.ami
   key_name                    = "rsa-keypair-${timestamp()}"
   subnet_id                   = module.vpc.public_subnets[0]
-  vpc_security_group_ids      = [module.security-group.security_group_id]
+  vpc_security_group_ids      = [module.proxy_backend.security_group_id]
   associate_public_ip_address = true
   private_ip                  = "10.0.101.12"
 
