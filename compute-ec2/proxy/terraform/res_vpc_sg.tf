@@ -1,4 +1,4 @@
-module "proxy_frontend" {
+module "sg_proxy_frontend" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.2"
 
@@ -11,6 +11,12 @@ module "proxy_frontend" {
       to_port     = 0
       protocol    = "-1"
       cidr_blocks = "${var.myip}/32"
+    },
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = "${module.vpc.vpc_cidr_block}"
     }
   ]
 
@@ -24,7 +30,7 @@ module "proxy_frontend" {
   ]
 }
 
-module "proxy_backend" {
+module "sg_proxy_backend" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.2"
 
@@ -37,7 +43,13 @@ module "proxy_backend" {
       to_port     = 0
       protocol    = "-1"
       cidr_blocks = "${var.myip}/32"
-    }
+    },
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = "${module.vpc.vpc_cidr_block}"
+    }    
   ]
 
   egress_with_cidr_blocks = [
