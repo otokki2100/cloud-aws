@@ -14,10 +14,6 @@ variable "domain" {
   description = "Domain"
 }
 
-variable "zone_id" {
-  description = "Zone id"
-}
-
 variable "region" {
   description = "AWS region"
   default     = "us-east-1"
@@ -36,4 +32,9 @@ variable "nlb" {
   type = object({
     enable_cross_zone = bool
   })
+}
+
+locals {
+  current_date = formatdate("YYMMDDHHmm", timestamp())
+  domain = "nlb-${local.current_date}.${var.domain}"
 }

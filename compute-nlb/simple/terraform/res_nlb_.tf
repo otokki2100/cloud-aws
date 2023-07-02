@@ -22,6 +22,15 @@ module "nlb" {
     }
   ]
 
+  https_listeners = [
+    {
+      port               = 443
+      protocol           = "TLS"
+      certificate_arn    = module.acm.acm_certificate_arn
+      target_group_index = 0
+    }
+  ]
+
   http_tcp_listeners = [
     {
       port               = 80
@@ -29,7 +38,7 @@ module "nlb" {
       target_group_index = 0
     }
   ]
-  
+
   tags = {
     Name = "nlb"
   }
