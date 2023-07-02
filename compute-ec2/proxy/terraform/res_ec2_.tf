@@ -35,7 +35,7 @@ module "proxy_backend" {
   key_name                    = "rsa-keypair-${timestamp()}"
   subnet_id                   = module.vpc.private_subnets[0]
   vpc_security_group_ids      = [module.sg_proxy_backend.security_group_id]
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   private_ip                  = "10.0.1.11"
 
   user_data                   = file(var.proxy_backend.user_data)
