@@ -11,5 +11,5 @@ output "vm_proxy_frontend_ip" {
 }
 
 output "vm_proxy_backend_ip" {
-  value = module.proxy_backend.public_ip
+  value = module.proxy_backend.private_ip
 }

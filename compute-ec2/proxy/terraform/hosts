@@ -1,0 +1,17 @@
+all:
+  hosts:
+    proxy_frontend:
+      ansible_host: 3.85.90.219
+      ansible_connection: ssh
+      ansible_user: centos
+      ansible_ssh_private_key_file: id_rsa
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+    proxy_backend:
+      ansible_host: 10.0.1.11
+      ansible_connection: ssh
+      ansible_user: centos
+      ansible_ssh_private_key_file: id_rsa
+      ansible_ssh_common_args:
+        -o StrictHostKeyChecking=no
+        -o ProxyCommand="ssh -W %h:%p -q -i id_rsa centos@3.85.90.219"

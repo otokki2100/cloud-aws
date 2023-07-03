@@ -9,3 +9,7 @@ output "vm_ip" {
 output "lb_dns_name" {
   value = module.nlb.lb_dns_name
 }
+
+output "domain" {
+  value = local.domain
+}
