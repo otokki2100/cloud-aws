@@ -1,6 +1,5 @@
 module "proxy_frontend" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
 
   name                        = "proxy_frontend"
   instance_type               = var.proxy_frontend.instance_type
@@ -12,7 +11,7 @@ module "proxy_frontend" {
   private_ip                  = "10.0.101.11"
 
   user_data                   = file(var.proxy_frontend.user_data)
-  
+
   root_block_device = [{
     volume_size = "100"
     volume_type = "gp3"
@@ -27,7 +26,6 @@ module "proxy_frontend" {
 
 module "proxy_backend" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
 
   name                        = "proxy_backend"
   instance_type               = var.proxy_backend.instance_type
@@ -39,7 +37,7 @@ module "proxy_backend" {
   private_ip                  = "10.0.1.11"
 
   user_data                   = file(var.proxy_backend.user_data)
-  
+
   root_block_device = [{
     volume_size = "100"
     volume_type = "gp3"
