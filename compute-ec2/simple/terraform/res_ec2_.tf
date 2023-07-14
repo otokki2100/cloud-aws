@@ -10,7 +10,7 @@ module "ec2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data                   = templatefile(data.http.script.response_body, {
+  user_data                   = templatefile(local_file.script, {
     domain                    = var.ec2.domain,
   })
 
