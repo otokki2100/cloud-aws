@@ -20,7 +20,7 @@ variable "proxy_frontend" {
     user           = string
     instance_type  = string
     ami            = string
-    user_data      = string
+    script         = string
   })
 }
 
@@ -29,6 +29,6 @@ variable "proxy_backend" {
     user           = string
     instance_type  = string
     ami            = string
-    user_data      = string
+    script         = string
   })
 }
