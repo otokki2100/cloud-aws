@@ -23,6 +23,4 @@ terraform.rc
 
 .terraform.lock.hcl
 
-test.script
-test1.script
-test2.script
+script
