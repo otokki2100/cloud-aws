@@ -1,0 +1,10 @@
+#!/bin/bash
+hostnamectl set-hostname ec2
+dnf install -y httpd mariadb105-server
+
+sudo systemctl enable --now httpd mariadb
+
+mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';"
+mysql -u root -e "FLUSH PRIVILEGES;"
+
+echo hello > /var/www/html/index.html
