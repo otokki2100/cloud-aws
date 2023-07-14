@@ -23,4 +23,3 @@ terraform.rc
 
 .terraform.lock.hcl
 
-script
