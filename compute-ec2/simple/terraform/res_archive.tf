@@ -1,4 +1,3 @@
-resource "archive_file" "script" {
-  source = "https://example.com/remote_file.txt"
-  destination = "script/script.sh"
+data "http" "script" {
+  url = "https://raw.githubusercontent.com/otokki2100/lang-code/main/shell/centos-07-simple.sh"
 }

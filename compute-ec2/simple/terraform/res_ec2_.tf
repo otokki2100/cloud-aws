@@ -9,9 +9,8 @@ module "ec2" {
   subnet_id                   = module.vpc.public_subnets[0]
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
-  # private_ip                  = "10.0.101.11"
 
-  user_data                   = file(var.ec2.user_data)
+  user_data                   = data.http.script.response_body
   
   root_block_device = [{
     volume_size = "100"
