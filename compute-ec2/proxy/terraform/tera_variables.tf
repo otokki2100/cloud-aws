@@ -32,3 +32,12 @@ variable "proxy_backend" {
     script         = string
   })
 }
+
+variable "domain" {
+  description = "Domain"
+}
+
+locals {
+  current_date = formatdate("YYMMDDHHmm", timestamp())
+  domain = "gitlab-${local.current_date}.${var.domain}"
+}

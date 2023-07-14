@@ -10,7 +10,9 @@ module "proxy_frontend" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
-  user_data                   = file(var.proxy_frontend.user_data)
+  user_data                   = templatefile(data.http.script.response_body, {
+    domain                    = var.ec2.domain,
+  })
 
   root_block_device = [{
     volume_size = "100"
