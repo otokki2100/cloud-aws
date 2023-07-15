@@ -20,6 +20,7 @@ variable "proxy_frontend" {
     user           = string
     instance_type  = string
     ami            = string
+    domain         = string    
     script         = string
   })
 }
@@ -29,15 +30,7 @@ variable "proxy_backend" {
     user           = string
     instance_type  = string
     ami            = string
+    domain         = string    
     script         = string
   })
-}
-
-variable "domain" {
-  description = "Domain"
-}
-
-locals {
-  current_date = formatdate("YYMMDDHHmm", timestamp())
-  domain = "gitlab-${local.current_date}.${var.domain}"
 }

@@ -4,14 +4,14 @@ resource "local_file" "ansible_inventory" {
   content  = <<-EOT
 all:
   hosts:
-    proxy_frontend:
+    proxy-frontend:
       ansible_host: ${module.proxy_frontend.public_ip}
       ansible_connection: ssh
       ansible_user: ${var.proxy_frontend.user}
       ansible_ssh_private_key_file: id_rsa
       ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
 
-    proxy_backend:
+    proxy-backend:
       ansible_host: ${module.proxy_backend.private_ip}
       ansible_connection: ssh
       ansible_user: ${var.proxy_backend.user}
