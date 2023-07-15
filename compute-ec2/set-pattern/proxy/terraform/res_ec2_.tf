@@ -27,7 +27,9 @@ module "proxy_frontend" {
     destination = "/home/${var.proxy_frontend.user}/.ssh/id_rsa"
   }
 
-
+  depends_on = [
+    local_file.key_pair_private,
+  ]
 
   tags = {
     Name = "proxy-frontend"
