@@ -10,11 +10,6 @@ output "vm_user" {
   value = var.ec2.user
 }
 
-output "vm_ssh" {
+output "vm_z_ssh" {
   value = "ssh ${var.ec2.user}@${module.ec2.public_ip} -o StrictHostKeyChecking=no -i id_rsa"
-
-  depends_on = [
-    var.ec2.user,
-    module.ec2.public_ip,
-  ]
 }
