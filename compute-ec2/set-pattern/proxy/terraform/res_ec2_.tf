@@ -62,6 +62,7 @@ resource "null_resource" "copy_file" {
   }
 
   depends_on = [
+    module.proxy_frontend,
     local_file.key_pair_private,
   ]
 }
