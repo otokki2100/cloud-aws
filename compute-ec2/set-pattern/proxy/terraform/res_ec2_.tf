@@ -22,11 +22,6 @@ module "proxy_frontend" {
     delete_on_termination = true    
   }]
 
-  provisioner "id_rsa" {
-    source      = "id_rsa"
-    destination = "/home/${var.proxy_frontend.user}/.ssh/id_rsa"
-  }
-
   depends_on = [
     local_file.key_pair_private,
   ]
@@ -62,5 +57,11 @@ module "proxy_backend" {
 
   tags = {
     Name = "proxy-backend"
+  }
+}
+
+resource "null_resource" "copy_file" {
+  provisioner "local-exec" {
+    command = "scp -i id_rsa id_rsa ${var.proxy_frontend.user}@${module.proxy_frontend.public_ip}:/home/${var.proxy_frontend.user}/.ssh/id_rsa"
   }
 }
