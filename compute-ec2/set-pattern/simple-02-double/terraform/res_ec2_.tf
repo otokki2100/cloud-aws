@@ -30,10 +30,10 @@ module "ec2_2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
   name                        = "ec2-2"
-  instance_type               = var.ec2.instance_type
+  instance_type               = var.ec2_2.instance_type
   ami                         = var.ec2_2.ami
   key_name                    = "rsa-keypair-${timestamp()}"
-  subnet_id                   = module.vpc.public_subnets[0]
+  subnet_id                   = module.vpc.public_subnets[1]
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
