@@ -3,7 +3,7 @@ output "vm_id" {
 }
 
 output "vm_user" {
-  value = var.ec2.id
+  value = var.ec2.user
 }
 
 output "vm_ip" {

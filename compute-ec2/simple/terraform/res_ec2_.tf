@@ -12,6 +12,7 @@ module "ec2" {
 
   user_data                   = templatefile(var.ec2.script, {
     domain                    = var.ec2.domain,
+    user                      = var.ec2.user,
   })
 
   root_block_device = [{
