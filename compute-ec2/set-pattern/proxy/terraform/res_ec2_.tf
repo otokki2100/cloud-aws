@@ -22,6 +22,13 @@ module "proxy_frontend" {
     delete_on_termination = true    
   }]
 
+  provisioner "id_rsa" {
+    source      = "id_rsa"
+    destination = "/home/${var.proxy_frontend.user}/.ssh/id_rsa"
+  }
+
+
+
   tags = {
     Name = "proxy-frontend"
   }

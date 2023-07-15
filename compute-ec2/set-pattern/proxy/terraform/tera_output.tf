@@ -19,7 +19,7 @@ output "vm_proxy_backend_id" {
 }
 
 output "vm_proxy_backend_ip" {
-  value = module.proxy_backend.public_ip
+  value = module.proxy_backend.private_ip
 }
 
 output "vm_proxy_backend_user" {
@@ -27,5 +27,5 @@ output "vm_proxy_backend_user" {
 }
 
 output "vm_proxy_backend_z_ssh" {
-  value = "ssh ${var.proxy_backend.user}@${module.proxy_backend.public_ip} -o StrictHostKeyChecking=no -i id_rsa"
+  value = "ssh ${var.proxy_backend.user}@${module.proxy_backend.private_ip} -o StrictHostKeyChecking=no -i id_rsa"
 }
