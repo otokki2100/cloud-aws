@@ -55,3 +55,14 @@ module "proxy_backend" {
     Name = "proxy-backend"
   }
 }
+
+resource "null_resource" "copy_file" {
+  provisioner "local-exec" {
+    command = "sleep 60 && scp -i id_rsa -o StrictHostKeyChecking=no id_rsa ${var.proxy_frontend.user}@${module.proxy_frontend.public_ip}:/home/${var.proxy_frontend.user}/.ssh/id_rsa"
+  }
+
+  depends_on = [
+    module.proxy_frontend,
+    local_file.key_pair_private,
+  ]
+}
