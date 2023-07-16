@@ -24,7 +24,6 @@ variable "ec2" {
     user           = string
     instance_type  = string
     ami            = string
-    user_data      = string
   })
 }
 

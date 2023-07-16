@@ -9,8 +9,6 @@ module "ec2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
   # private_ip                  = "10.0.101.11"
-
-  user_data                   = file(var.ec2.user_data)
   
   root_block_device = [{
     volume_size = "100"
