@@ -8,6 +8,6 @@ resource "aws_route53_record" "domain_record" {
   name    = local.domain
   type    = "CNAME"
   ttl     = 60
-  records = [module.nlb.lb_dns_name]
+  records = [module.alb.lb_dns_name]
   allow_overwrite = true
 }

@@ -27,13 +27,7 @@ variable "ec2" {
   })
 }
 
-variable "nlb" {
-  type = object({
-    enable_cross_zone = bool
-  })
-}
-
 locals {
   current_date = formatdate("YYMMDDHHmm", timestamp())
-  domain = "nlb-${local.current_date}.${var.domain}"
+  domain = "alb-${local.current_date}.${var.domain}"
 }

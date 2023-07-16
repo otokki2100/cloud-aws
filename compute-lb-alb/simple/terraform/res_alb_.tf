@@ -5,6 +5,7 @@ module "alb" {
   load_balancer_type = "application"
   vpc_id             = module.vpc.vpc_id
   subnets            = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]
+  security_groups    = [module.security_group_alb.security_group_id]
   enable_deletion_protection = false
 
   target_groups = [
@@ -25,7 +26,7 @@ module "alb" {
   https_listeners = [
     {
       port               = 443
-      protocol           = "TLS"
+      protocol           = "HTTPS"
       certificate_arn    = module.acm.acm_certificate_arn
       target_group_index = 0
     }
@@ -34,7 +35,7 @@ module "alb" {
   http_tcp_listeners = [
     {
       port               = 80
-      protocol           = "TCP"
+      protocol           = "HTTP"
       target_group_index = 0
     }
   ]
