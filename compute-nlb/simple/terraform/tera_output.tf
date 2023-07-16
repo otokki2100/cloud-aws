@@ -13,3 +13,7 @@ output "lb_dns_name" {
 output "domain" {
   value = local.domain
 }
+
+output "vm_z_ssh" {
+  value = "ssh ${var.ec2.user}@${module.ec2.public_ip} -o StrictHostKeyChecking=no -i id_rsa"
+}
