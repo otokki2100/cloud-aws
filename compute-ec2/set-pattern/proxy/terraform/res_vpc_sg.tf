@@ -1,5 +1,5 @@
 module "sg_proxy_frontend" {
-  source  = "terraform-aws-modules/security-group/aws"
+  source = "terraform-aws-modules/security-group/aws"
 
   name   = "proxy-frontend"
   vpc_id = module.vpc.vpc_id
@@ -48,7 +48,7 @@ module "sg_proxy_backend" {
       to_port     = 0
       protocol    = "-1"
       cidr_blocks = "${module.vpc.vpc_cidr_block}"
-    }    
+    }
   ]
 
   egress_with_cidr_blocks = [

@@ -1,5 +1,5 @@
 module "proxy_frontend" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name                        = "proxy-frontend"
   instance_type               = var.proxy_frontend.instance_type
@@ -10,16 +10,16 @@ module "proxy_frontend" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
-  user_data                   = templatefile(var.proxy_frontend.script, {
-    domain                    = var.proxy_frontend.domain,
-    user                      = var.proxy_frontend.user,
+  user_data = templatefile(var.proxy_frontend.script, {
+    domain = var.proxy_frontend.domain,
+    user   = var.proxy_frontend.user,
   })
 
   root_block_device = [{
-    volume_size = "100"
-    volume_type = "gp3"
+    volume_size           = "100"
+    volume_type           = "gp3"
     encrypted             = true
-    delete_on_termination = true    
+    delete_on_termination = true
   }]
 
   tags = {
@@ -28,7 +28,7 @@ module "proxy_frontend" {
 }
 
 module "proxy_backend" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name                        = "proxy-backend"
   instance_type               = var.proxy_backend.instance_type
@@ -39,16 +39,16 @@ module "proxy_backend" {
   associate_public_ip_address = false
   private_ip                  = "10.0.1.11"
 
-  user_data                   = templatefile(var.proxy_backend.script, {
-    domain                    = var.proxy_backend.domain,
-    user                      = var.proxy_backend.user,
+  user_data = templatefile(var.proxy_backend.script, {
+    domain = var.proxy_backend.domain,
+    user   = var.proxy_backend.user,
   })
 
   root_block_device = [{
-    volume_size = "100"
-    volume_type = "gp3"
+    volume_size           = "100"
+    volume_type           = "gp3"
     encrypted             = true
-    delete_on_termination = true    
+    delete_on_termination = true
   }]
 
   tags = {

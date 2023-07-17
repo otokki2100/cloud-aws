@@ -1,10 +1,10 @@
 module "nlb" {
-  source  = "terraform-aws-modules/alb/aws"
+  source = "terraform-aws-modules/alb/aws"
 
-  name               = "nlb"
-  load_balancer_type = "network"
-  vpc_id             = module.vpc.vpc_id
-  subnets            = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]
+  name                       = "nlb"
+  load_balancer_type         = "network"
+  vpc_id                     = module.vpc.vpc_id
+  subnets                    = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]
   enable_deletion_protection = false
 
   target_groups = [
@@ -16,7 +16,7 @@ module "nlb" {
       targets = {
         target = {
           target_id = module.ec2.id
-          port = 80
+          port      = 80
         }
       }
     }

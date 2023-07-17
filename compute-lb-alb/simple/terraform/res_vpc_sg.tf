@@ -1,5 +1,5 @@
 module "security_group_ec2" {
-  source  = "terraform-aws-modules/security-group/aws"
+  source = "terraform-aws-modules/security-group/aws"
 
   name   = "security-group-ec2"
   vpc_id = module.vpc.vpc_id
@@ -30,7 +30,7 @@ module "security_group_ec2" {
 }
 
 module "security_group_alb" {
-  source  = "terraform-aws-modules/security-group/aws"
+  source = "terraform-aws-modules/security-group/aws"
 
   name   = "security-group-alb"
   vpc_id = module.vpc.vpc_id

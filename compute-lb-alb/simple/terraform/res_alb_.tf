@@ -1,11 +1,11 @@
 module "alb" {
-  source  = "terraform-aws-modules/alb/aws"
+  source = "terraform-aws-modules/alb/aws"
 
-  name               = "alb"
-  load_balancer_type = "application"
-  vpc_id             = module.vpc.vpc_id
-  subnets            = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]
-  security_groups    = [module.security_group_alb.security_group_id]
+  name                       = "alb"
+  load_balancer_type         = "application"
+  vpc_id                     = module.vpc.vpc_id
+  subnets                    = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]
+  security_groups            = [module.security_group_alb.security_group_id]
   enable_deletion_protection = false
 
   target_groups = [
@@ -17,7 +17,7 @@ module "alb" {
       targets = {
         target = {
           target_id = module.ec2.id
-          port = 80
+          port      = 80
         }
       }
     }
