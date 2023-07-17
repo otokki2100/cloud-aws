@@ -10,16 +10,16 @@ module "ec2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data                   = templatefile(var.ec2.script, {
-    domain                    = var.ec2.domain,
-    user                      = var.ec2.user,
+  user_data = templatefile(var.ec2.script, {
+    domain = var.ec2.domain,
+    user   = var.ec2.user,
   })
 
   root_block_device = [{
-    volume_size = "100"
-    volume_type = "gp3"
+    volume_size           = "100"
+    volume_type           = "gp3"
     encrypted             = true
-    delete_on_termination = true    
+    delete_on_termination = true
   }]
 
   tags = {

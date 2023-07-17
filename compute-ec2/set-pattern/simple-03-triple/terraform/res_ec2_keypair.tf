@@ -1,5 +1,5 @@
 module "key_pair" {
-  source  = "terraform-aws-modules/key-pair/aws"
+  source = "terraform-aws-modules/key-pair/aws"
 
   key_name           = "rsa-keypair-${timestamp()}"
   create_private_key = true

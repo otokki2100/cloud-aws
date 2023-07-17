@@ -1,5 +1,5 @@
 module "security-group" {
-  source  = "terraform-aws-modules/security-group/aws"
+  source = "terraform-aws-modules/security-group/aws"
 
   name   = "security-group"
   vpc_id = module.vpc.vpc_id

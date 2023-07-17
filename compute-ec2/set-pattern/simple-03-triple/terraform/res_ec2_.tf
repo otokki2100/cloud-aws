@@ -1,5 +1,5 @@
 module "ec2_1" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name                        = "ec2-1"
   instance_type               = var.ec2_1.instance_type
@@ -9,16 +9,16 @@ module "ec2_1" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data                   = templatefile(var.ec2_1.script, {
-    domain                    = var.ec2_1.domain,
-    user                      = var.ec2_1.user,
+  user_data = templatefile(var.ec2_1.script, {
+    domain = var.ec2_1.domain,
+    user   = var.ec2_1.user,
   })
 
   root_block_device = [{
-    volume_size = "100"
-    volume_type = "gp3"
+    volume_size           = "100"
+    volume_type           = "gp3"
     encrypted             = true
-    delete_on_termination = true    
+    delete_on_termination = true
   }]
 
   tags = {
@@ -27,7 +27,7 @@ module "ec2_1" {
 }
 
 module "ec2_2" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name                        = "ec2-2"
   instance_type               = var.ec2_2.instance_type
@@ -37,16 +37,16 @@ module "ec2_2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data                   = templatefile(var.ec2_2.script, {
-    domain                    = var.ec2_2.domain,
-    user                      = var.ec2_2.user,
+  user_data = templatefile(var.ec2_2.script, {
+    domain = var.ec2_2.domain,
+    user   = var.ec2_2.user,
   })
 
   root_block_device = [{
-    volume_size = "100"
-    volume_type = "gp3"
+    volume_size           = "100"
+    volume_type           = "gp3"
     encrypted             = true
-    delete_on_termination = true    
+    delete_on_termination = true
   }]
 
   tags = {
@@ -55,7 +55,7 @@ module "ec2_2" {
 }
 
 module "ec2_3" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name                        = "ec2-3"
   instance_type               = var.ec2_3.instance_type
@@ -65,16 +65,16 @@ module "ec2_3" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data                   = templatefile(var.ec2_3.script, {
-    domain                    = var.ec2_3.domain,
-    user                      = var.ec2_3.user,
+  user_data = templatefile(var.ec2_3.script, {
+    domain = var.ec2_3.domain,
+    user   = var.ec2_3.user,
   })
 
   root_block_device = [{
-    volume_size = "100"
-    volume_type = "gp3"
+    volume_size           = "100"
+    volume_type           = "gp3"
     encrypted             = true
-    delete_on_termination = true    
+    delete_on_termination = true
   }]
 
   tags = {
