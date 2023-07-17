@@ -1,6 +1,5 @@
 module "ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
 
   name                        = "ec2"
   instance_type               = var.ec2.instance_type
