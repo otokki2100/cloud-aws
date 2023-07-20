@@ -25,18 +25,10 @@ module "db" {
   }
 
   create_db_subnet_group = true
-  subnet_ids             = ["subnet-12345678", "subnet-87654321"]
+  subnet_ids             = module.vpc.private_subnets
 
-
-  private_subnets      = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-
-
-
-
-  family = "mysql5.7"
-
-  # DB option group
-  major_engine_version = "5.7"
+  family = "mariadb10.6"
+  major_engine_version = "10.6"
 
   deletion_protection = false
 
@@ -62,7 +54,7 @@ module "db" {
         },
         {
           name  = "SERVER_AUDIT_FILE_ROTATIONS"
-          value = "37"
+          value = "30"
         },
       ]
     },

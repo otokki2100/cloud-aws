@@ -7,10 +7,6 @@ variable "myip" {
   description = "My IP"
 }
 
-variable "domain" {
-  description = "Domain"
-}
-
 variable "ec2" {
   type = object({
     user          = string
