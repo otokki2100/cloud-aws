@@ -12,6 +12,7 @@ module "db" {
   username = "admin"
   port     = "3306"
   password = "Password12#"
+  manage_master_user_password = false
 
   iam_database_authentication_enabled = false
 
