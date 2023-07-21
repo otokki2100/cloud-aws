@@ -11,7 +11,7 @@ module "db" {
   db_name  = "demodb"
   username = "admin"
   port     = "3306"
-  password = "Password123!@#"
+  password = "Password12#"
 
   iam_database_authentication_enabled = false
 
