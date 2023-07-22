@@ -1,3 +1,7 @@
+data "aws_kms_key" "default" {
+  key_id = "alias/aws/rds"
+}
+
 module "db" {
   source = "terraform-aws-modules/rds/aws"
 
@@ -19,14 +23,6 @@ module "db" {
 
   vpc_security_group_ids = [module.security_group_rds.security_group_id]
 
-  monitoring_interval    = "60"
-  monitoring_role_name   = "RDSMonitoringRole"
-  create_monitoring_role = true
-
-  tags = {
-    Name       = "demodb"
-  }
-
   create_db_subnet_group = true
   subnet_ids             = module.vpc.private_subnets
 
@@ -34,12 +30,14 @@ module "db" {
   major_engine_version = "10.6"
 
   skip_final_snapshot = true
-  deletion_protection = false
 
-  performance_insights_enabled          = true
-  performance_insights_retention_period = 7
-  create_monitoring_role                = true
-  monitoring_interval                   = 60
+  monitoring_interval    = "60"
+  monitoring_role_name   = "RDSMonitoringRole"
+  create_monitoring_role = true
+
+  #performance_insights_enabled          = true
+  #performance_insights_kms_key_id = 
+  #performance_insights_retention_period = 7
 
   create_db_parameter_group = true
 
@@ -72,4 +70,10 @@ module "db" {
       ]
     },
   ]
+
+  deletion_protection = false
+
+  tags = {
+    Name       = "demodb"
+  }  
 }
