@@ -7,6 +7,7 @@ module "db" {
   engine_version    = "10.6.14"
   instance_class    = "db.t3.micro"
   allocated_storage = 20
+  max_allocated_storage = 100
 
   db_name  = "demodb"
   username = "admin"
@@ -32,7 +33,15 @@ module "db" {
   family = "mariadb10.6"
   major_engine_version = "10.6"
 
+  skip_final_snapshot = true
   deletion_protection = false
+
+  performance_insights_enabled          = true
+  performance_insights_retention_period = 7
+  create_monitoring_role                = true
+  monitoring_interval                   = 60
+
+  create_db_parameter_group = true
 
   parameters = [
     {
@@ -44,6 +53,8 @@ module "db" {
       value = "utf8mb4"
     }
   ]
+
+  create_db_option_group = true
 
   options = [
     {
