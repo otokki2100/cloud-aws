@@ -1,7 +1,7 @@
 all:
   hosts:
     ec2:
-      ansible_host: 18.212.160.134
+      ansible_host: 54.90.7.203
       ansible_connection: ssh
       ansible_user: centos
       ansible_ssh_private_key_file: id_rsa
