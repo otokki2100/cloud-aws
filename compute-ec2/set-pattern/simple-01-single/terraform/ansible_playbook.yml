@@ -1,14 +1,14 @@
 ---
-- hosts: {{ target }}
+- hosts: all
   tasks:
     - file:
-        path: /home/{{ variable.user }}/code
+        path: /home/{{ user }}/code
         state: directory
         mode: "0755"
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: /home/{{ variable.user }}/code/{{ item }}
+        dest: /home/{{ user }}/code/{{ item }}
       with_items:
         - cloud-aws
         - svc-iac

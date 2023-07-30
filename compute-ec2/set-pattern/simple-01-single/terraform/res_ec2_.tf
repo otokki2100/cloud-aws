@@ -8,13 +8,18 @@ module "ec2" {
   subnet_id                   = module.vpc.public_subnets[0]
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
+  user_data = <<-EOF
+    #!/bin/bash
+    curl -L http://example.com/my-script.sh -o userdata.sh
+    bash userdata.sh
+  EOF
 
-  user_data = templatefile(var.ec2.code, {
+user_data = templatefile("${var.wiki_code}/lang-code/shell/init/init-${var.ec2.dist}.sh.tpl", {
     user   = var.ec2.user,
     dist   = var.ec2.dist,
     domain = var.ec2.domain,
   })
-
+  
   root_block_device = [{
     volume_size           = "100"
     volume_type           = "gp3"
