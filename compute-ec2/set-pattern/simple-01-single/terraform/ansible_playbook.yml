@@ -1,5 +1,5 @@
 ---
-- hosts: tag_Service_web
+- hosts: all
   tasks:
     - include_vars:
         file: ansible_variables.yml
@@ -22,20 +22,4 @@
         - lang-code.git
 
     - ansible.builtin.shell:
-        cmd: sh /script/web_01_package.sh
-      become: true
-
-
-
-
-
-
-
-region: us-east-1
-myip: 180.71.22.215
-user: ec2-user
-instance_type: t3.micro
-ami: ami-022e1a32d3f742bd8
-domain: amazl-23
-code: /Users/admin-mgmt/all/wiki/code/lang-code/shell/init/init-amazl-23.sh
-
+        cmd: sh ~/code/lang-code/shell/init/init-{{ variable.domain }}.sh

@@ -9,10 +9,11 @@ variable "myip" {
 
 variable "ec2" {
   type = object({
-    user          = string
     instance_type = string
-    ami           = string
+    ami           = string    
+    user          = string
     domain        = string
+    dist          = string
     code          = string
   })
 }
