@@ -11,15 +11,15 @@
         mode: "0755"
 
     - git:
-        repo: "https://otokki2100@github.com/otokki2100/{{ item }}"
+        repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
         dest: /home/{{ variable.user }}/code/{{ item }}
       with_items:
-        - cloud-aws.git
-        - svc-iac.git
-        - svc-web.git
-        - svc-conn.git
-        - svc-repo.git
-        - lang-code.git
+        - cloud-aws
+        - svc-iac
+        - svc-web
+        - svc-conn
+        - svc-repo
+        - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh ~/code/lang-code/shell/init/init-{{ variable.domain }}.sh
+        cmd: sh ~/code/lang-code/shell/init/init-{{ variable.dist }}.sh {{ variable.user }} {{ variable.dist }} {{ variable.domain }}
