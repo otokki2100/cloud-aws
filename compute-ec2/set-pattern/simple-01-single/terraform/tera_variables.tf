@@ -13,6 +13,6 @@ variable "ec2" {
     instance_type = string
     ami           = string
     domain        = string
-    script        = string
+    code          = string
   })
 }
