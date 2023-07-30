@@ -7,22 +7,26 @@ variable "myip" {
   description = "My IP"
 }
 
+variable "wiki_code_path" {
+  description = "Wiki Code Path"
+}
+
 variable "ec2_1" {
   type = object({
-    user          = string
     instance_type = string
     ami           = string
+    user          = string
+    dist          = string
     domain        = string
-    script        = string
   })
 }
 
 variable "ec2_2" {
   type = object({
-    user          = string
     instance_type = string
     ami           = string
+    user          = string
+    dist          = string
     domain        = string
-    script        = string
   })
 }
