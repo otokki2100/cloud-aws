@@ -18,4 +18,4 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh /home/{{ user }}/code/{{ code }} {{ user }} {{ dist }} {{ domain }}
+        cmd: sh {{ code }} {{ user }} {{ dist }} {{ domain }}
