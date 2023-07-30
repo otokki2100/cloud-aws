@@ -9,9 +9,10 @@ module "ec2_1" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data = templatefile(var.ec2_1.script, {
-    domain = var.ec2_1.domain,
+  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.ec2_1.dist}.sh.tpl", {
     user   = var.ec2_1.user,
+    dist   = var.ec2_1.dist,
+    domain = var.ec2_1.domain,
   })
 
   root_block_device = [{
@@ -37,9 +38,10 @@ module "ec2_2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data = templatefile(var.ec2_2.script, {
-    domain = var.ec2_2.domain,
+  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.ec2_2.dist}.sh.tpl", {
     user   = var.ec2_2.user,
+    dist   = var.ec2_2.dist,
+    domain = var.ec2_2.domain,
   })
 
   root_block_device = [{
@@ -65,9 +67,10 @@ module "ec2_3" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data = templatefile(var.ec2_3.script, {
-    domain = var.ec2_3.domain,
+  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.ec2_3.dist}.sh.tpl", {
     user   = var.ec2_3.user,
+    dist   = var.ec2_3.dist,
+    domain = var.ec2_3.domain,
   })
 
   root_block_device = [{
