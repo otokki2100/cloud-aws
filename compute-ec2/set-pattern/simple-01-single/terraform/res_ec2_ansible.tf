@@ -12,3 +12,17 @@ all:
       ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   EOT
 }
+
+resource "local_file" "ansible_variables" {
+  filename        = "ansible_variables.yml"
+  file_permission = "0600"
+  content         = <<-EOT
+region: ${var.region}
+myip: ${var.myip}
+user: ${var.ec2.user}
+instance_type: ${var.ec2.instance_type}
+ami: ${var.ec2.ami}
+domain: ${var.ec2.domain}
+code: ${var.ec2.code}
+  EOT
+}
