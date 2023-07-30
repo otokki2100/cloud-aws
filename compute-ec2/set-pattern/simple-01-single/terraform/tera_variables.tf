@@ -12,8 +12,8 @@ variable "ec2" {
     instance_type = string
     ami           = string    
     user          = string
-    domain        = string
     dist          = string
+    domain        = string
     code          = string
   })
 }

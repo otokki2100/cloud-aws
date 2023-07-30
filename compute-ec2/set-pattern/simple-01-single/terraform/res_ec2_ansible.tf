@@ -19,9 +19,10 @@ resource "local_file" "ansible_variables" {
   content         = <<-EOT
 region: ${var.region}
 myip: ${var.myip}
-user: ${var.ec2.user}
 instance_type: ${var.ec2.instance_type}
 ami: ${var.ec2.ami}
+user: ${var.ec2.user}
+dist: ${var.ec2.dist}
 domain: ${var.ec2.domain}
 code: ${var.ec2.code}
   EOT
