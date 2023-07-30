@@ -1,0 +1,7 @@
+region: us-east-1
+myip: 180.71.22.215
+instance_type: 
+ami: ami-022e1a32d3f742bd8
+user: ec2-user
+dist: amazl-23
+domain: amazl-23
