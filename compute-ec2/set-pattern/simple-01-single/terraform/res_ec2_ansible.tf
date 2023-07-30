@@ -24,6 +24,5 @@ ami: ${var.ec2.ami}
 user: ${var.ec2.user}
 dist: ${var.ec2.dist}
 domain: ${var.ec2.domain}
-code: ${var.ec2.code}
   EOT
 }

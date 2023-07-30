@@ -1,10 +1,6 @@
 ---
-- hosts: all
+- hosts: {{ target }}
   tasks:
-    - include_vars:
-        file: ansible_variables.yml
-        name: variable
-
     - file:
         path: /home/{{ variable.user }}/code
         state: directory
@@ -22,4 +18,4 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh ~/code/lang-code/shell/init/init-{{ variable.dist }}.sh {{ variable.user }} {{ variable.dist }} {{ variable.domain }}
+        cmd: sh {{ code }} {{ user }} {{ dist }} {{ domain }}

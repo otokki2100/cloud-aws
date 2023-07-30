@@ -10,8 +10,9 @@ module "ec2" {
   associate_public_ip_address = true
 
   user_data = templatefile(var.ec2.code, {
-    domain = var.ec2.domain,
     user   = var.ec2.user,
+    dist   = var.ec2.dist,
+    domain = var.ec2.domain,
   })
 
   root_block_device = [{
