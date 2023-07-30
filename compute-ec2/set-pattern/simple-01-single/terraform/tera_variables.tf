@@ -7,7 +7,7 @@ variable "myip" {
   description = "My IP"
 }
 
-variable "wiki_code" {
+variable "wiki_code_path" {
   description = "Wiki Code Path"
 }
 
