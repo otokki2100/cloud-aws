@@ -1,7 +1,7 @@
 region: us-east-1
 myip: 180.71.22.215
 instance_type: t3.micro
-ami: ami-022e1a32d3f742bd8
-user: ec2-user
-dist: amazl-23
-domain: amazl-23
+ami: ami-002070d43b0a4f171
+user: centos
+dist: centos-07
+domain: centos-07
