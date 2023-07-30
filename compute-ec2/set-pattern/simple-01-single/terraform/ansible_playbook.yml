@@ -1,0 +1,41 @@
+---
+- hosts: tag_Service_web
+  tasks:
+    - include_vars:
+        file: ansible_variables.yml
+        name: variable
+
+    - file:
+        path: /home/{{ variable.user }}/code
+        state: directory
+        mode: "0755"
+
+    - git:
+        repo: "https://otokki2100@github.com/otokki2100/{{ item }}"
+        dest: /home/{{ variable.user }}/code/{{ item }}
+      with_items:
+        - cloud-aws.git
+        - svc-iac.git
+        - svc-web.git
+        - svc-conn.git
+        - svc-repo.git
+        - lang-code.git
+
+    - ansible.builtin.shell:
+        cmd: sh /script/web_01_package.sh
+      become: true
+
+
+
+
+
+
+
+region: us-east-1
+myip: 180.71.22.215
+user: ec2-user
+instance_type: t3.micro
+ami: ami-022e1a32d3f742bd8
+domain: amazl-23
+code: /Users/admin-mgmt/all/wiki/code/lang-code/shell/init/init-amazl-23.sh
+
