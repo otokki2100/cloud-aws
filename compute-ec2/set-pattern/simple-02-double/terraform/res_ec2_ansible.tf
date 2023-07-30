@@ -27,16 +27,16 @@ resource "local_file" "ansible_variables" {
 region: ${var.region}
 myip: ${var.myip}
 
-instance_type: ${var.ec2_1.instance_type}
-ami: ${var.ec2_1.ami}
-user: ${var.ec2_1.user}
-dist: ${var.ec2_1.dist}
-domain: ${var.ec2_1.domain}
+instance_type_1: ${var.ec2_1.instance_type}
+ami_1: ${var.ec2_1.ami}
+user_1: ${var.ec2_1.user}
+dist_1: ${var.ec2_1.dist}
+domain_1: ${var.ec2_1.domain}
 
-instance_type: ${var.ec2_2.instance_type}
-ami: ${var.ec2_2.ami}
-user: ${var.ec2_2.user}
-dist: ${var.ec2_2.dist}
-domain: ${var.ec2_2.domain}
+instance_type_2: ${var.ec2_2.instance_type}
+ami_2: ${var.ec2_2.ami}
+user_2: ${var.ec2_2.user}
+dist_2: ${var.ec2_2.dist}
+domain_2: ${var.ec2_2.domain}
   EOT
 }

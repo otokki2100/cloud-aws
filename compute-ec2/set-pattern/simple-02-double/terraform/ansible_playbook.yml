@@ -1,0 +1,42 @@
+---
+- hosts: ec2-1
+  tasks:
+    - file:
+        path: /home/{{ user_1 }}/code
+        state: directory
+        mode: "0755"
+
+    - git:
+        repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
+        dest: /home/{{ user_1 }}/code/{{ item }}
+      with_items:
+        - cloud-aws
+        - svc-iac
+        - svc-web
+        - svc-conn
+        - svc-repo
+        - lang-code
+
+    - ansible.builtin.shell:
+        cmd: sh {{ code_1 }} {{ user_1 }} {{ dist_1 }} {{ domain_1 }}
+
+- hosts: ec2-2
+  tasks:
+    - file:
+        path: /home/{{ user_2 }}/code
+        state: directory
+        mode: "0755"
+
+    - git:
+        repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
+        dest: /home/{{ user_2 }}/code/{{ item }}
+      with_items:
+        - cloud-aws
+        - svc-iac
+        - svc-web
+        - svc-conn
+        - svc-repo
+        - lang-code
+
+    - ansible.builtin.shell:
+        cmd: sh {{ code_2 }} {{ user_2 }} {{ dist_2 }} {{ domain_2 }}
