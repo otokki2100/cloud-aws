@@ -1,14 +1,18 @@
 ---
 - hosts: ec2-1
   tasks:
+    - include_vars:
+        file: ansible_variables.yml
+        name: var
+
     - file:
-        path: /home/{{ user_1 }}/code
+        path: /home/{{ var.user_1 }}/all/wiki/code
         state: directory
         mode: "0755"
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: /home/{{ user_1 }}/code/{{ item }}
+        dest: "{{ var.wiki_code_path_remote }}/{{ item }}"
       with_items:
         - cloud-aws
         - svc-iac
@@ -18,18 +22,21 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh {{ code_1 }} {{ user_1 }} {{ dist_1 }} {{ domain_1 }}
+        cmd: sh {{ var.wiki_code_path_remote }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}
 
 - hosts: ec2-2
   tasks:
+    - include_vars:
+        file: ansible_variables.yml
+        name: var  
     - file:
-        path: /home/{{ user_2 }}/code
+        path: /home/{{ var.user_2 }}/all/wiki/code
         state: directory
         mode: "0755"
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: /home/{{ user_2 }}/code/{{ item }}
+        dest: "{{ var.wiki_code_path_remote }}/{{ item }}"
       with_items:
         - cloud-aws
         - svc-iac
@@ -39,4 +46,4 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh {{ code_2 }} {{ user_2 }} {{ dist_2 }} {{ domain_2 }}
+        cmd: sh {{ var.wiki_code_path_remote }}/{{ code }} {{ var.user_2 }} {{ var.dist_2 }} {{ var.domain_2 }}
