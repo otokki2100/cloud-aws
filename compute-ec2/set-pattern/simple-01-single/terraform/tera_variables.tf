@@ -7,6 +7,10 @@ variable "myip" {
   description = "My IP"
 }
 
+variable "wiki_code_path_local" {
+  description = "Wiki Code Path Local"
+}
+
 variable "wiki_code_path_remote" {
   description = "Wiki Code Path Remote"
 }
