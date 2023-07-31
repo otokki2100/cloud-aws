@@ -10,7 +10,7 @@ module "proxy_frontend" {
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
-  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.proxy_frontend.dist}.sh.tpl", {
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.proxy_frontend.dist}.sh.tpl", {
     user   = var.proxy_frontend.user,
     dist   = var.proxy_frontend.dist,
     domain = var.proxy_frontend.domain,
@@ -40,7 +40,7 @@ module "proxy_backend" {
   associate_public_ip_address = false
   private_ip                  = "10.0.1.11"
 
-  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.proxy_backend.dist}.sh.tpl", {
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.proxy_backend.dist}.sh.tpl", {
     user   = var.proxy_backend.user,
     dist   = var.proxy_backend.dist,
     domain = var.proxy_backend.domain,

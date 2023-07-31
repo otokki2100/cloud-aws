@@ -1,5 +1,5 @@
 ---
-- hosts: ec2-2
+- hosts: proxy-backend
   tasks:
     - include_vars:
         file: ansible_variables.yml

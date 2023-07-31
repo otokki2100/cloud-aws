@@ -1,18 +1,18 @@
 ---
-- hosts: ec2-2
+- hosts: proxy-frontend
   tasks:
     - include_vars:
         file: ansible_variables.yml
         name: var
 
     - file:
-        path: /home/{{ var.user_2 }}/all/wiki/code
+        path: /home/{{ var.user_1 }}/all/wiki/code
         state: directory
         mode: "0755"
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: "{{ var.wiki_code_path_remote_2 }}/{{ item }}"
+        dest: "{{ var.wiki_code_path_remote_1 }}/{{ item }}"
       with_items:
         - cloud-aws
         - svc-iac
@@ -22,4 +22,4 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh {{ var.wiki_code_path_remote_2 }}/{{ code }} {{ var.user_2 }} {{ var.dist_2 }} {{ var.domain_2 }}
+        cmd: sh {{ var.wiki_code_path_remote_1 }}/{{ code }} {{ var.user_1 }} {{ var.dist_1 }} {{ var.domain_1 }}
