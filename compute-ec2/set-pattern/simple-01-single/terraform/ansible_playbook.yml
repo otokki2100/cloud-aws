@@ -2,7 +2,7 @@
 - hosts: ec2
   tasks:
     - include_vars:
-        file: ansible_playbook.yml
+        file: ansible_variables.yml
         name: var
 
     - file:
