@@ -12,7 +12,7 @@
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: /home/{{ var.user }}/all/wiki/code/{{ item }}
+        dest: "{{ var.wiki_code_path_local }}/{{ item }}"
       with_items:
         - cloud-aws
         - svc-iac
