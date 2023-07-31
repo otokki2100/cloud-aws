@@ -18,4 +18,4 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh {{ code }} {{ user }} {{ dist }} {{ domain }}
+        cmd: sh {{ wiki_code_path_remote }}/{{ code }} {{ user }} {{ dist }} {{ domain }}

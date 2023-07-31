@@ -9,7 +9,7 @@ module "ec2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.ec2.dist}.sh.tpl", {
+  user_data = templatefile("${var.wiki_code_path_local}/lang-code/shell/init/init-${var.ec2.dist}.sh.tpl", {
     user   = var.ec2.user,
     dist   = var.ec2.dist,
     domain = var.ec2.domain,
