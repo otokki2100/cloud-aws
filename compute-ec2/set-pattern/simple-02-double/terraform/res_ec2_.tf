@@ -9,7 +9,7 @@ module "ec2_1" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.ec2_1.dist}.sh.tpl", {
+  user_data = templatefile("${var.wiki_code_path_remote}/lang-code/shell/init/init-${var.ec2_1.dist}.sh.tpl", {
     user   = var.ec2_1.user,
     dist   = var.ec2_1.dist,
     domain = var.ec2_1.domain,
@@ -38,7 +38,7 @@ module "ec2_2" {
   vpc_security_group_ids      = [module.security-group.security_group_id]
   associate_public_ip_address = true
 
-  user_data = templatefile("${var.wiki_code_path}/lang-code/shell/init/init-${var.ec2_2.dist}.sh.tpl", {
+  user_data = templatefile("${var.wiki_code_path_remote}/lang-code/shell/init/init-${var.ec2_2.dist}.sh.tpl", {
     user   = var.ec2_2.user,
     dist   = var.ec2_2.dist,
     domain = var.ec2_2.domain,
