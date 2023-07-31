@@ -1,14 +1,18 @@
 ---
 - hosts: ec2
   tasks:
+    - include_vars:
+        file: ansible_playbook.yml
+        name: var
+
     - file:
-        path: /home/{{ user }}/code
+        path: /home/{{ var.user }}/code
         state: directory
         mode: "0755"
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: /home/{{ user }}/code/{{ item }}
+        dest: /home/{{ var.user }}/code/{{ item }}
       with_items:
         - cloud-aws
         - svc-iac
@@ -18,4 +22,4 @@
         - lang-code
 
     - ansible.builtin.shell:
-        cmd: sh {{ wiki_code_path_remote }}/{{ code }} {{ user }} {{ dist }} {{ domain }}
+        cmd: sh {{ var.wiki_code_path_remote }}/{{ code }} {{ var.user }} {{ var.dist }} {{ var.domain }}
