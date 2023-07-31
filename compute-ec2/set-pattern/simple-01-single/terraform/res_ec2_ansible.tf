@@ -19,6 +19,7 @@ resource "local_file" "ansible_variables" {
   content         = <<-EOT
 region: ${var.region}
 myip: ${var.myip}
+wiki_code_path_local: ${var.wiki_code_path_local}
 wiki_code_path_remote: ${var.wiki_code_path_remote}
 instance_type: ${var.ec2.instance_type}
 ami: ${var.ec2.ami}
