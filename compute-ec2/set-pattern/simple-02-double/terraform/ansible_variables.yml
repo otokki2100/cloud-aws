@@ -1,0 +1,15 @@
+region: us-east-1
+myip: 180.71.22.215
+wiki_code_path_remote: /home/centos/all/wiki/code
+
+instance_type_1: t3.micro
+ami_1: ami-022e1a32d3f742bd8
+user_1: ec2-user
+dist_1: amazl-23
+domain_1: ec2-1-amazl-23
+
+instance_type_2: t3.micro
+ami_2: ami-022e1a32d3f742bd8
+user_2: ec2-user
+dist_2: amazl-23
+domain_2: ec2-2-amazl-23
