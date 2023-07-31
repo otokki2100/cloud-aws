@@ -6,13 +6,13 @@
         name: var
 
     - file:
-        path: /home/{{ var.user }}/code
+        path: /home/{{ var.user }}/all/wiki/code
         state: directory
         mode: "0755"
 
     - git:
         repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
-        dest: /home/{{ var.user }}/code/{{ item }}
+        dest: /home/{{ var.user }}/all/wiki/code/{{ item }}
       with_items:
         - cloud-aws
         - svc-iac
