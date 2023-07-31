@@ -1,0 +1,23 @@
+FROM ubuntu:20.04
+
+ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.local/bin:/usr/local/bin"
+
+RUN apt update \
+  && apt -y install curl rsync unzip git python3 python3-pip \
+  && apt clean \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN curl -L https://releases.hashicorp.com/terraform/1.5.1/terraform_1.5.1_linux_arm64.zip -o /tmp/terraform.zip \
+  && unzip /tmp/terraform.zip \
+  && mv terraform /usr/local/bin/
+
+RUN python3 -m pip install ansible
+
+RUN useradd -m -s /bin/bash admin-mgmt
+
+USER admin-mgmt
+
+RUN git clone https://github.com/otokki2100/cloud-aws.git /home/admin-mgmt/all/wiki/code/cloud-aws
+RUN git clone https://github.com/otokki2100/lang-code.git /home/admin-mgmt/all/wiki/code/lang-code
+
+WORKDIR /home/admin-mgmt
