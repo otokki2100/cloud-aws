@@ -1,0 +1,25 @@
+---
+- hosts: ec2-3
+  tasks:
+    - include_vars:
+        file: ansible_variables.yml
+        name: var
+
+    - file:
+        path: /home/{{ var.user_3 }}/all/wiki/code
+        state: directory
+        mode: "0755"
+
+    - git:
+        repo: "https://otokki2100@github.com/otokki2100/{{ item }}.git"
+        dest: "{{ var.wiki_code_path_remote_3 }}/{{ item }}"
+      with_items:
+        - cloud-aws
+        - svc-iac
+        - svc-web
+        - svc-conn
+        - svc-repo
+        - lang-code
+
+    - ansible.builtin.shell:
+        cmd: sh {{ var.wiki_code_path_remote_3 }}/{{ code }} {{ var.user_3 }} {{ var.dist_3 }} {{ var.domain_3 }}
