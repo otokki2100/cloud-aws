@@ -6,6 +6,10 @@ output "vm_ip" {
   value = module.ec2.public_ip
 }
 
+output "instance_type" {
+  value = var.ec2.instance_type
+}
+
 output "vm_user" {
   value = var.ec2.user
 }
