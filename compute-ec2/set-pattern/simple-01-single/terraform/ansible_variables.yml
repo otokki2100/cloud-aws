@@ -1,5 +1,5 @@
 region: us-east-1
-myip: 203.248.23.206
+myip: 180.71.22.215
 wiki_code_path_remote: /home/centos/all/wiki/code
 instance_type: t3.micro
 ami: ami-002070d43b0a4f171
